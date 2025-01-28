@@ -1,29 +1,32 @@
 from django.shortcuts import render, redirect
 from .helper.query import query_serpapi
-from .models import InteractionLog
-from datetime import datetime
+from .models import InteractionLog, FAQ
 
 
-# Home Page View
+# Home Page
 def home(request):
     return render(request, "home.html")
 
 
 # Ask Question View
 def ask_question(request):
-    user_query = request.GET.get("query", None)  # Retrieve the query from GET parameter
+    user_query = request.GET.get("query", None)
     if not user_query:
         return render(request, "ask.html", {
             "error": "No query provided. Please go back and ask a question.",
         })
 
-    # Query SerpAPI for the response
-    response = query_serpapi('give the output in sort ' + user_query)
+    # question exists in the FAQ model
+    faq = FAQ.objects.filter(question=user_query).first()
 
-    # Log the interaction to the database
+    if faq:
+        response = faq.answer
+    else:
+        response = query_serpapi('give the output in short ' + user_query)
+
+    # Save to Interaction model
     InteractionLog.objects.create(user_query=user_query, response=response)
 
-    # Render the Ask page with the response
     return render(request, "ask.html", {
         "query": user_query,
         "response": response,

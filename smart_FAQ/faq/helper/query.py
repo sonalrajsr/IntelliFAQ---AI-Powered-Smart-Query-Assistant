@@ -19,5 +19,3 @@ def query_serpapi(query):
         model="llama-3.3-70b-versatile",
     )
     return chat_completion.choices[0].message.content
-
-print(query_serpapi('Tell me in sort about the privacy policy about making youtube channel'))
