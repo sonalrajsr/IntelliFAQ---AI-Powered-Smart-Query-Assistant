@@ -1,0 +1,113 @@
+/* General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Header */
+.header {
+    margin-bottom: 20px;
+}
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Form */
+.query-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+.query-input {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.submit-btn {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #ff7eb3;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.submit-btn:hover {
+    background: #ff4d6d;
+}
+
+/* Response */
+.response-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+.response-box h3 {
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+}
+.response-text {
+    font-size: 1rem;
+}
+.hidden {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+
+/* Example styling for markdown content */
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+    color: #2e3b4e;
+}
+
+.markdown-content p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.markdown-content blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 16px;
+    font-style: italic;
+}

@@ -20,4 +20,4 @@ def query_serpapi(query):
     )
     return chat_completion.choices[0].message.content
 
-print(query_serpapi('temm me about vinayt bhia'))
+print(query_serpapi('Tell me in sort about the privacy policy about making youtube channel'))

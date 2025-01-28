@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - FAQ Assistant</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to the FAQ Assistant</h1>
+            <p>Type your question below to get started.</p>
+        </header>
+        <main>
+            <form method="get" action="/ask/">
+                <input 
+                    type="text" 
+                    name="query" 
+                    placeholder="Type your question here..." 
+                    required 
+                />
+                <button type="submit">Ask Question</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
