@@ -13,7 +13,7 @@ def home(request):
 
 # Ask Question View
 def ask_question(request):
-    user_query = request.GET.get("query", None)  # Get the query from the user
+    user_query = request.GET.get("query", None)
     if not user_query:
         return render(request, "ask.html", {
             "error": "No query provided. Please go back and ask a question.",

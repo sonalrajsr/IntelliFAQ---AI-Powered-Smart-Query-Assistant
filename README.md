@@ -67,6 +67,15 @@ The FAQ Assistant is a Django-based intelligent question-answering system design
 
 ---
 
+## Demo
+Visit this link for demo, Working of website and model.
+```
+https://youtu.be/S2up0BrRSFc
+```
+[![Watch the video](https://img.youtube.com/vi/S2up0BrRSFc/maxresdefault.jpg)](https://www.youtube.com/watch?v=S2up0BrRSFc)
+
+---
+
 ## Benefits
 - **Efficiency**: Quickly answers common questions with pre-stored FAQs.
 - **Flexibility**: Handles unique or unforeseen queries using LLMs.
