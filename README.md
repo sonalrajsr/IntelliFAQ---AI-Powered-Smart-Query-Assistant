@@ -10,10 +10,10 @@ The FAQ Assistant is a Django-based intelligent question-answering system design
 ### 1. **FAQ Database Querying**
    - The system maintains a structured database of frequently asked questions (FAQs) along with their corresponding answers.
    - When a user submits a query, the system first checks for a matching question in the database using semantic similarity techniques.
-   - If a match is found with a similarity score of 90% or above, the associated answer is returned to the user.
+   - If a match is found with a similarity score of 70% or above, the associated answer is returned to the user.
 
 ### 2. **Integration with LLMs**
-   - If no matching FAQ is found (similarity score below 90%), the system dynamically generates an answer using a connected Large Language Model (LLM).
+   - If no matching FAQ is found (similarity score below 70%), the system dynamically generates an answer using a connected Large Language Model (LLM).
    - This ensures users receive an accurate response even for queries not present in the FAQ database.
    - The LLM can handle complex, open-ended, or highly specific queries.
 
