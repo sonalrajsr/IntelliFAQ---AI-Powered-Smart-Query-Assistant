@@ -24,26 +24,27 @@ def ask_question(request):
 
     # Fetch all FAQs
     faqs = FAQ.objects.all()
-    faq_embeddings = [faq.embedding for faq in faqs if faq.embedding]  # Ensure embeddings exist
+    # Extract embeddings and answers from FAQs for matching the similarity scores
+    faq_embeddings = [faq.embedding for faq in faqs if faq.embedding]
     faq_answers = [faq.answer for faq in faqs]
-
+    
+    
     if faq_embeddings:
-        # Calculate similarity scores
+        # similarity scores
         similarity_scores = compute_similarity(query_embedding, faq_embeddings)
         max_similarity = max(similarity_scores)
         max_index = similarity_scores.argmax()
 
-        if max_similarity >= 0.9:
-            # Return the stored FAQ answer if similarity >= 90%
+        if max_similarity >= 0.7:
             response = faq_answers[max_index]
         else:
-            # Query LLM if no FAQ match is close enough
+            # If no FAQ exists, query the LLM
             response = query_serpapi('give the output in sort ' + user_query)
     else:
         # If no FAQ exists, query the LLM
         response = query_serpapi('give the output in sort ' + user_query)
 
-        # save this as a new InteractionLog
+        # save this as a new InteractionLog(Table)
         InteractionLog.objects.create(
             user_query=user_query,
             response=response
