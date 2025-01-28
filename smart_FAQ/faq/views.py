@@ -40,6 +40,11 @@ def ask_question(request):
         else:
             # If no FAQ exists, query the LLM
             response = query_serpapi('give the output in sort ' + user_query)
+            # save this as a new InteractionLog(Table)
+            InteractionLog.objects.create(
+                user_query=user_query,
+                response=response
+            )
     else:
         # If no FAQ exists, query the LLM
         response = query_serpapi('give the output in sort ' + user_query)
