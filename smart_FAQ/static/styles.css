@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -11,6 +12,7 @@ body {
     min-height: 100vh;
 }
 
+/* Container for Centering Content */
 .container {
     max-width: 800px;
     width: 100%;
@@ -23,6 +25,7 @@ body {
     margin: 20px;
 }
 
+/* Header Styles */
 header {
     margin-bottom: 30px;
 }
@@ -30,6 +33,7 @@ header h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin: 0;
+    color: #fff;
 }
 header p {
     font-size: 1.2rem;
@@ -37,6 +41,7 @@ header p {
     opacity: 0.9;
 }
 
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
@@ -62,6 +67,7 @@ input[type="text"]:focus {
     border: 2px solid #ff7eb3;
 }
 
+/* Button Styling */
 button {
     padding: 12px 16px;
     background: #ff7eb3;
@@ -80,6 +86,7 @@ button:hover {
     background: #ff4d6d;
 }
 
+/* Query Response Section */
 .query-response {
     text-align: left;
     margin-top: 30px;
@@ -99,13 +106,15 @@ button:hover {
     line-height: 1.6;
 }
 
+/* Error Message */
 .error {
-    color: red;
+    color: #ff4d6d;
     font-size: 1.2rem;
     margin-top: 20px;
     font-weight: bold;
 }
 
+/* Back Button */
 a.back-button {
     display: inline-block;
     margin-top: 30px;
@@ -122,12 +131,14 @@ a.back-button:hover {
     background: #6a11cb;
 }
 
+/* Footer */
 footer {
     margin-top: 40px;
     font-size: 0.9rem;
     opacity: 0.8;
 }
 
+/* Responsive Design */
 @media (max-width: 600px) {
     .container {
         padding: 20px;

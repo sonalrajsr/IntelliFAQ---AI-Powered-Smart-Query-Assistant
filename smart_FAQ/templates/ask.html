@@ -4,29 +4,27 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results - FAQ Assistant</title>
+    <title>Ask - FAQ Assistant</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>FAQ Assistant Results</h1>
-        </header>
-        <main>
-            {% if error %}
-                <div class="error">
-                    <p>{{ error }}</p>
-                </div>
-            {% else %}
-                <div class="query-response">
-                    <h3>Question:</h3>
-                    <p>{{ query }}</p>
-                    <h3>Answer:</h3>
-                    <p>{{ response }}</p>
-                </div>
-            {% endif %}
-            <a href="/" class="back-button">Ask Another Question</a>
-        </main>
+        <h1>FAQ Assistant</h1>
+
+        {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% else %}
+            <div class="query-response">
+                <h3>Question:</h3>
+                <p>{{ query }}</p>
+                <h3>Answer:</h3>
+                <p>{{ response }}</p>
+            </div>
+        {% endif %}
+
+        <a href="/" class="back-button">Ask Another Question</a>
     </div>
 </body>
 </html>
