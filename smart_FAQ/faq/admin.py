@@ -3,7 +3,7 @@ from .models import FAQ, InteractionLog
 
 @admin.register(FAQ)
 class FAQ(admin.ModelAdmin):
-    list_display = ['question', 'answer']
+    list_display = ['question', 'answer', 'timestamp']
     search_fields = ['question']
 
 
