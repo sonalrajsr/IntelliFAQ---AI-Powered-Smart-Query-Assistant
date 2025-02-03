@@ -7,42 +7,44 @@ The FAQ Assistant is a Django-based intelligent question-answering system design
 
 ## Features
 
+## Features
+
 ### 1. **FAQ Database Querying**
    - The system maintains a structured database of frequently asked questions (FAQs) along with their corresponding answers.
    - When a user submits a query, the system first checks for a matching question in the database using semantic similarity techniques.
-   - If a match is found with a similarity score of 70% or above, the associated answer is returned to the user.
+   - If a match is found with a similarity score of 90% or above, the associated answer is returned to the user.
 
 ### 2. **Integration with LLMs**
-   - If no matching FAQ is found (similarity score below 70%), the system dynamically generates an answer using a connected Large Language Model (LLM).
+   - If no matching FAQ is found (similarity score below 90%), the system dynamically generates an answer using a connected Large Language Model (LLM).
    - This ensures users receive an accurate response even for queries not present in the FAQ database.
    - The LLM can handle complex, open-ended, or highly specific queries.
 
-### 3. **Similarity Scoring Mechanism**
-   - The system uses advanced natural language processing (NLP) techniques to calculate the similarity score between user queries and stored FAQs.
-   - This ensures a high level of accuracy in retrieving relevant answers.
+### 3. **Google Search API Integration**
+   - The system integrates with Google Search API to fetch relevant information from the web when the LLM is unable to provide a satisfactory response.
+   - This enhances accuracy for queries requiring up-to-date or external knowledge.
 
-### 4. **Dynamic Knowledge Base**
+### 4. **Improved Similarity Scoring Mechanism**
+   - The system now employs a more advanced NLP-based similarity scoring algorithm.
+   - This improves accuracy by considering semantic relationships beyond just keyword matching.
+
+### 5. **Dynamic Knowledge Base**
    - Administrators can easily add, edit, or remove FAQs from the database.
    - The FAQ database is designed to evolve, allowing it to grow with the needs of its users.
 
-### 5. **Fallback to LLMs for Unanswered Queries**
+### 6. **Fallback to LLMs for Unanswered Queries**
    - When a query is not present in the database, the system seamlessly transitions to an LLM to generate a relevant and contextually accurate answer.
-   - This ensures that users are not left without a response, even for unique or unanticipated queries.
+   - If the LLM cannot provide a satisfactory response, the system queries Google Search API for additional information.
 
-### 6. **Error Handling**
-   - When the system cannot generate a response (e.g., if the LLM is unavailable), it provides a user-friendly error message.
-   - Ensures that users are not left without guidance.
+### 7. **Enhanced Query Logging**
+   - Each query, along with its response source (FAQ database, LLM, or Google Search API), is logged for future analysis.
+   - This helps administrators refine the knowledge base and improve response accuracy over time.
 
-### 7. **Interactive Frontend**
+### 8. **Interactive Frontend**
    - A simple, user-friendly interface allows users to ask questions and view responses.
    - Responsive design ensures compatibility across various devices.
 
-### 8. **Scalable Architecture**
+### 9. **Scalable Architecture**
    - The project is designed with scalability in mind, making it suitable for deployment in small-scale or enterprise-level environments.
-
-### 9. **Real-Time Query Logging**
-   - Logs user queries for future analysis.
-   - Provides insights into user behavior and helps identify gaps in the FAQ database.
 
 ### 10. **Customizable Thresholds**
    - Administrators can adjust the similarity score threshold (default: 90%) to balance between precision and recall.
