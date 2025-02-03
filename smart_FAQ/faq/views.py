@@ -1,15 +1,13 @@
 from django.shortcuts import render
 from .helper.query import query_serpapi
-from .models import  FAQ, InteractionLog
+from .models import FAQ, InteractionLog
 from .helper.embeddings import generate_embedding, compute_similarity, initialize_faq_embeddings
-
-
+from .helper.google_search import google_search
 
 # Home Page
 def home(request):
     initialize_faq_embeddings()
     return render(request, "home.html")
-
 
 # Ask Question View
 def ask_question(request):
@@ -24,36 +22,35 @@ def ask_question(request):
 
     # Fetch all FAQs
     faqs = FAQ.objects.all()
-    # Extract embeddings and answers from FAQs for matching the similarity scores
-    faq_embeddings = [faq.embedding for faq in faqs if faq.embedding]
-    faq_answers = [faq.answer for faq in faqs]
+
+    # Ensure FAQ embeddings and answers are properly aligned
+    faq_data = [(faq.embedding, faq.answer) for faq in faqs if faq.embedding]
     
-    
-    if faq_embeddings:
-        # similarity scores
+    if faq_data:
+        faq_embeddings, faq_answers = zip(*faq_data)  # Extract embeddings and answers
         similarity_scores = compute_similarity(query_embedding, faq_embeddings)
-        max_similarity = max(similarity_scores)
-        max_index = similarity_scores.argmax()
+
+        # Find the most similar FAQ
+        max_index, max_similarity = max(enumerate(similarity_scores), key=lambda x: x[1])
 
         if max_similarity >= 0.7:
             response = faq_answers[max_index]
         else:
-            # If no FAQ exists, query the LLM
-            response = query_serpapi('give the output in sort ' + user_query)
-            # save this as a new InteractionLog(Table)
-            InteractionLog.objects.create(
-                user_query=user_query,
-                response=response
-            )
-    else:
-        # If no FAQ exists, query the LLM
-        response = query_serpapi('give the output in sort ' + user_query)
+            # No match found, query Google and LLM
+            google_result = google_search(user_query)
+            full_query = f"Give a concise answer for: {user_query} {google_result} for polynomial.ai"
+            response = query_serpapi(full_query)
 
-        # save this as a new InteractionLog(Table)
-        InteractionLog.objects.create(
-            user_query=user_query,
-            response=response
-        )
+            # Log interaction
+            InteractionLog.objects.create(user_query=user_query, response=response)
+    else:
+        # If no FAQs exist, query the LLM
+        google_result = google_search(user_query)
+        full_query = f"Give a concise answer for: {user_query} {google_result} for polynomial.ai"
+        response = query_serpapi(full_query)
+
+        # Log interaction
+        InteractionLog.objects.create(user_query=user_query, response=response)
 
     # Render the response
     return render(request, "ask.html", {

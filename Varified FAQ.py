@@ -21,7 +21,7 @@ faq_data = faq_data = [
     ("How do I use static files in Django, and why are they important?", "Static files (CSS, JavaScript, and image files) are managed separately from the rest of your content in Django. You can link to these static files using the `{% static %}` template tag. Proper management of static files is important for enhancing the performance and user experience of web applications.", "2025-01-28 19:55:30")
 ]
 
-# Insert FAQ data into the table
+# Insert FAQ data into the tablexx00
 cursor.executemany('''
 INSERT INTO faq_faq (question, answer, timestamp)
 VALUES (?, ?, ?)
